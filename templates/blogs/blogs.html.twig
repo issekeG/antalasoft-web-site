@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block seo %}
+    <title>Antalasoft</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+{% endblock %}
 
 {% block main %}
 
@@ -9,16 +14,17 @@
       <div class="breadcrumbs">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('app_home') }}"><i class="bi bi-house"></i> Accueil</a></li>
             <li class="breadcrumb-item active current">Actualités</li>
           </ol>
         </nav>
       </div>
 
-      <div class="title-wrapper">
-        <h1>Nos articles</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-      </div>
+        <div class="title-wrapper">
+            <h1>Nos articles</h1>
+            <p>Retrouvez nos conseils, actualités et astuces pour rester à jour avec les dernières tendances technologiques.</p>
+        </div>
+
     </div><!-- End Page Title -->
 
       <!-- recentes actualite Section -->

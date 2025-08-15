@@ -2,33 +2,46 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
+use App\Form\ContactType;
+use App\Repository\ArticleRepository;
+use App\Repository\RealisationCategoryRepository;
+use App\Repository\RealisationRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
-    public function index(): Response
+    #[Route('/', name: 'app_home')]
+    public function index(Request $request, EntityManagerInterface $entityManager,ArticleRepository $articleRepository, RealisationCategoryRepository $realisationService, RealisationRepository $realisationRepository): Response
     {
-        return $this->render('base.html.twig', [
-            'controller_name' => 'HomeController',
+        $realisations = $realisationRepository->findAll();
+
+        return $this->render('home/index.html.twig', [
+            'realisations' => $realisations,
+            'realisationServices' => $realisationService->findAll(),
+            'articles' => $articleRepository->findBy([]),
         ]);
     }
 
     #[Route('/nos-realisations', name: 'app_realisations')]
-    public function realisations(): Response
+    public function realisations(RealisationRepository $realisationRepository, RealisationCategoryRepository $realisationService): Response
     {
         return $this->render('realisations/realisations.html.twig', [
-            'controller_name' => 'HomeController',
+            'realisations' => $realisationRepository->findBy([]),
+            'realisationServices' => $realisationService->findAll(),
+
         ]);
     }
 
-    #[Route('/realisations-details', name: 'app_realisation_details')]
-    public function realisation_details(): Response
+    #[Route('/realisations-details/{slug}', name: 'app_realisation_details')]
+    public function realisation_details(string $slug, RealisationRepository $realisationRepository): Response
     {
         return $this->render('realisations/realisation-details.html.twig', [
-            'controller_name' => 'HomeController',
+            'realisation' => $realisationRepository->findOneBy(['slug' => $slug]),
         ]);
     }
 
@@ -49,19 +62,24 @@ final class HomeController extends AbstractController
     }
 
     #[Route('/nos-articles', name: 'app_blogs')]
-    public function blogs(): Response
+    public function blogs(Request $request,  ArticleRepository $articleRepository): Response
     {
         return $this->render('blogs/blogs.html.twig', [
-            'controller_name' => 'HomeController',
+            'articles' => $articleRepository->findBy([]),
         ]);
     }
 
-    #[Route('/article-details', name: 'app_blog_details')]
-    public function article_details(): Response
+    #[Route('/article-details/{slug}', name: 'app_blog_details')]
+    public function article_details(string $slug, ArticleRepository $articleRepository): Response
     {
         return $this->render('blogs/blog-details.html.twig', [
-            'controller_name' => 'HomeController',
+            'article' => $articleRepository->findOneBy(['slug' => $slug]),
         ]);
+    }
+
+    #[Route('/nous-contact', name: 'app_contact')]
+    public function contact(): Response{
+        return $this->render('contact/contact.html.twig', []);
     }
 
 

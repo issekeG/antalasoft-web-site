@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block seo %}
+    <title>Antalasoft</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+{% endblock %}
 
 {% block main %}
 
@@ -9,15 +14,15 @@
       <div class="breadcrumbs">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('app_home') }}"><i class="bi bi-house"></i> Accueil</a></li>
             <li class="breadcrumb-item active current">Realisation detail</li>
           </ol>
         </nav>
       </div>
 
       <div class="title-wrapper">
-        <h1>Réalisation Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+          <h1>Détails de la réalisation</h1>
+          <p>{{ realisation.title }}</p>
       </div>
     </div><!-- End Page Title -->
 
@@ -30,21 +35,19 @@
 
           <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="service-image">
-              <img src="assets/img/health/cardiology-3.webp" alt="Cardiology Services" class="img-fluid">
+              <img src="{{ asset('upload/images/realisations/'~ realisation.poster) | imagine_filter('thumbnail_realisation_detail') }}" alt="antalaSoft {{ realisation.title }}" class="img-fluid">
               <div class="service-tag">
-                <span>Specialized Care</span>
+                <span>{{ realisation.service.name }}</span>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="service-content">
-              <h2>Creation site web</h2>
-              <p class="service-tagline">Advanced heart care with cutting-edge technology and compassionate expertise</p>
+              <p class="service-tagline">{{ realisation.subTitle }}</p>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div>{{ realisation.description | raw }}</div>
 
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
           </div>
 
@@ -64,107 +67,24 @@
 
               <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
                   <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                      {% for image in realisation.realisationImages %}
                       <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
                           <div class="gallery-card">
                               <div class="gallery-img">
-                                  <img src="assets/img/gallery/gallery-1.webp" class="img-fluid" alt="Gallery Image" loading="lazy">
+                                  <img src="{{ asset('upload/images/realisations/'~ image.image)| imagine_filter('thumbnail_realisation') }}" class="img-fluid" alt="antalaSoft {{ realisation.title }}" loading="lazy">
                                   <div class="gallery-overlay">
                                       <div class="gallery-info">
-                                          <h4>Nature Exploration</h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                          <a href="assets/img/gallery/gallery-1.webp" class="glightbox gallery-link" data-gallery="gallery-images">
+                                          <a href="{{ asset('upload/images/realisations/'~ image.image) }}" class="glightbox gallery-link" data-gallery="gallery-images">
                                               <i class="bi bi-plus-circle"></i>
                                           </a>
                                       </div>
                                   </div>
                               </div>
                           </div>
-                      </div><!-- End Gallery Item -->
+                      </div>
+                      {% endfor %}
+                      <!-- End Gallery Item -->
 
-                      <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-architecture">
-                          <div class="gallery-card">
-                              <div class="gallery-img">
-                                  <img src="assets/img/gallery/gallery-2.webp" class="img-fluid" alt="Gallery Image" loading="lazy">
-                                  <div class="gallery-overlay">
-                                      <div class="gallery-info">
-                                          <h4>Modern Architecture</h4>
-                                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                          <a href="assets/img/gallery/gallery-2.webp" class="glightbox gallery-link" data-gallery="gallery-images">
-                                              <i class="bi bi-plus-circle"></i>
-                                          </a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div><!-- End Gallery Item -->
-
-                      <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-people">
-                          <div class="gallery-card">
-                              <div class="gallery-img">
-                                  <img src="assets/img/gallery/gallery-3.webp" class="img-fluid" alt="Gallery Image" loading="lazy">
-                                  <div class="gallery-overlay">
-                                      <div class="gallery-info">
-                                          <h4>Urban Life</h4>
-                                          <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris.</p>
-                                          <a href="assets/img/gallery/gallery-3.webp" class="glightbox gallery-link" data-gallery="gallery-images">
-                                              <i class="bi bi-plus-circle"></i>
-                                          </a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div><!-- End Gallery Item -->
-
-                      <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-travel">
-                          <div class="gallery-card">
-                              <div class="gallery-img">
-                                  <img src="assets/img/gallery/gallery-4.webp" class="img-fluid" alt="Gallery Image" loading="lazy">
-                                  <div class="gallery-overlay">
-                                      <div class="gallery-info">
-                                          <h4>Travel Destinations</h4>
-                                          <p>Aenean lacinia bibendum nulla sed consectetur.</p>
-                                          <a href="assets/img/gallery/gallery-4.webp" class="glightbox gallery-link" data-gallery="gallery-images">
-                                              <i class="bi bi-plus-circle"></i>
-                                          </a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div><!-- End Gallery Item -->
-
-                      <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
-                          <div class="gallery-card">
-                              <div class="gallery-img">
-                                  <img src="assets/img/gallery/gallery-5.webp" class="img-fluid" alt="Gallery Image" loading="lazy">
-                                  <div class="gallery-overlay">
-                                      <div class="gallery-info">
-                                          <h4>Natural Wonders</h4>
-                                          <p>Cras mattis consectetur purus sit amet fermentum.</p>
-                                          <a href="assets/img/gallery/gallery-5.webp" class="glightbox gallery-link" data-gallery="gallery-images">
-                                              <i class="bi bi-plus-circle"></i>
-                                          </a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div><!-- End Gallery Item -->
-
-                      <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-architecture">
-                          <div class="gallery-card">
-                              <div class="gallery-img">
-                                  <img src="assets/img/gallery/gallery-6.webp" class="img-fluid" alt="Gallery Image" loading="lazy">
-                                  <div class="gallery-overlay">
-                                      <div class="gallery-info">
-                                          <h4>Historic Buildings</h4>
-                                          <p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                          <a href="assets/img/gallery/gallery-6.webp" class="glightbox gallery-link" data-gallery="gallery-images">
-                                              <i class="bi bi-plus-circle"></i>
-                                          </a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div><!-- End Gallery Item -->
                   </div><!-- End Gallery Container -->
               </div>
 

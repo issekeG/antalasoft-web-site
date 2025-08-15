@@ -3,108 +3,33 @@
     <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
         <ul class="gallery-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">Tout</li>
-            <li data-filter=".filter-nature">Data</li>
-            <li data-filter=".filter-architecture">Scraping</li>
-            <li data-filter=".filter-people">Web - mobile</li>
-            <li data-filter=".filter-travel">Automatisation</li>
+            {% for service in realisationServices %}
+            <li data-filter=".{{ service.name | slug }}">{{ service.name }}</li>
+            {% endfor %}
         </ul><!-- End Gallery Filters -->
 
         <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
-                <div class="gallery-card">
-                    <div class="gallery-img">
-                        <img src="{{ asset('assets/img/realisations/realisation.png') }}" class="img-fluid" alt="realisation antalasoft" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h4>AntalaSoftRealisation</h4>
-                                <a href="{{ path('app_realisation_details') }}" class="gallery-link">
-                                    <i class="bi bi-plus-circle"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Gallery Item -->
 
-            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-architecture">
+            {% for realisation in realisations %}
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item {{ realisation.service.name | slug }}">
                 <div class="gallery-card">
                     <div class="gallery-img">
-                        <img src="{{ asset('assets/img/realisations/realisation.png') }}" class="img-fluid" alt="realisation antalasoft" loading="lazy">
+                        <img src="{{ asset('upload/images/realisations/' ~ realisation.poster) | imagine_filter('thumbnail_realisation')}}" class="img-fluid" alt="{{ realisation.title }}" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-info">
-                                <h4>AntalaSoftRealisation</h4>
-                                <a href="{{ path('app_realisation_details') }}" class="gallery-link">
-                                    <i class="bi bi-plus-circle"></i>
+                                <h4>{{ realisation.title }}</h4>
+                                <a href="{{ path('app_realisation_details', {'slug': realisation.slug}) }}" class="gallery-link">
+                                    <i class="bi bi-eye"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><!-- End Gallery Item -->
+            </div>
+            {% endfor %}
+            <!-- End Gallery Item -->
 
-            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-people">
-                <div class="gallery-card">
-                    <div class="gallery-img">
-                        <img src="{{ asset('assets/img/realisations/realisation.png') }}" class="img-fluid" alt="realisation antalasoft" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h4>AntalaSoftRealisation</h4>
-                                <a href="{{ path('app_realisation_details') }}" class="gallery-link">
-                                    <i class="bi bi-plus-circle"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Gallery Item -->
 
-            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-travel">
-                <div class="gallery-card">
-                    <div class="gallery-img">
-                        <img src="{{ asset('assets/img/realisations/realisation.png') }}" class="img-fluid" alt="realisation antalasoft" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h4>AntalaSoftRealisation</h4>
-                                <a href="{{ path('app_realisation_details') }}" class="gallery-link">
-                                    <i class="bi bi-plus-circle"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Gallery Item -->
-
-            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
-                <div class="gallery-card">
-                    <div class="gallery-img">
-                        <img src="{{ asset('assets/img/realisations/realisation.png') }}" class="img-fluid" alt="realisation antalasoft" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h4>AntalaSoftRealisation</h4>
-                                <a href="{{ path('app_realisation_details') }}" class="gallery-link">
-                                    <i class="bi bi-plus-circle"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Gallery Item -->
-
-            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-travel">
-                <div class="gallery-card">
-                    <div class="gallery-img">
-                        <img src="{{ asset('assets/img/realisations/realisation.png') }}" class="img-fluid" alt="realisation antalasoft" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h4>AntalaSoftRealisation</h4>
-                                <a href="{{ path('app_realisation_details') }}" class="gallery-link">
-                                    <i class="bi bi-plus-circle"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Gallery Item -->
         </div><!-- End Gallery Container -->
     </div>
 

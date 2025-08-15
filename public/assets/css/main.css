@@ -679,7 +679,7 @@ h6 {
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
-    transition-delay: 0 !important;
+    transition-delay: 0s !important;
   }
 }
 
@@ -5251,7 +5251,7 @@ section,
   background-color: transparent;
 }
 
-.contact .form-container .btn-submit {
+.contact .form-container .btn-submit , #index-contact-btn-submit {
   background: linear-gradient(145deg, var(--accent-color), color-mix(in srgb, var(--accent-color), #1a4372 30%));
   color: var(--contrast-color);
   border: none;

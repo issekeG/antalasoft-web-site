@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+{% block seo %}
+    <title>Antalasoft</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+{% endblock %}
+
+{% block main %}
+
+  <main class="main">
+
+      <!-- Titre de la page -->
+      <div class="page-title">
+          <div class="breadcrumbs">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Accueil</a></li>
+                      <li class="breadcrumb-item active current">Contact</li>
+                  </ol>
+              </nav>
+          </div>
+
+          <div class="title-wrapper">
+              <h1>Page de contact</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+          </div>
+      </div>
+      <!-- Fin du titre de la page -->
+
+      <!-- Section Contact -->
+      <section id="contact" class="contact section">
+
+          <div class="container">
+              <div class="contact-wrapper">
+                  <div class="contact-info-panel">
+                      <div class="contact-info-header">
+                          <h3>Informations de contact</h3>
+                      </div>
+
+                      <div class="contact-info-cards">
+                          <div class="info-card">
+                              <div class="icon-container">
+                                  <i class="bi bi-pin-map-fill"></i>
+                              </div>
+                              <div class="card-content">
+                                  <h4>Notre adresse</h4>
+                                  <p>Sidi - Maroof, Casablanca, Maroc</p>
+                              </div>
+                          </div>
+                          <div class="info-card">
+                              <div class="icon-container">
+                                  <i class="bi bi-telephone-fill"></i>
+                              </div>
+                              <div class="card-content">
+                                  <h4>Téléphone</h4>
+                                  <p>+212 6 12 50 40 68</p>
+                              </div>
+                          </div>
+
+                          <div class="info-card">
+                              <div class="icon-container">
+                                  <i class="bi bi-clock-history"></i>
+                              </div>
+                              <div class="card-content">
+                                  <h4>Horaires d'ouverture</h4>
+                                  <p>Lundi au samedi : 9h00 - 19h00</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="social-links-panel">
+                          <h5>Suivez-nous</h5>
+                          <div class="social-icons">
+                              <a href="#"><i class="bi bi-facebook"></i></a>
+                              <a href="#"><i class="bi bi-twitter-x"></i></a>
+                              <a href="#"><i class="bi bi-instagram"></i></a>
+                              <a href="#"><i class="bi bi-linkedin"></i></a>
+                              <a href="#"><i class="bi bi-youtube"></i></a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="contact-form-panel">
+                      <div class="form-container">
+                          {% for message in app.flashes('success') %}
+                              <div class="alert alert-success">
+                                  {{ message }}
+                              </div>
+                          {% endfor %}
+
+                          <div class="php-email-form">
+                              {{ form_start(contactForm, {'attr': {'novalidate': true, 'id':'contactForm'}}) }}
+
+                              <div class="form-floating mb-3">
+                                  {{ form_widget(contactForm.fullName, {'attr': {'class': 'form-control', 'placeholder': 'Nom & Prénom'}}) }}
+                                  {{ form_label(contactForm.fullName, 'Nom & Prénom') }}
+                                  {{ form_errors(contactForm.fullName) }}
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                  {{ form_widget(contactForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse e-mail', 'type':'email'}}) }}
+                                  {{ form_label(contactForm.email, 'Adresse e-mail') }}
+                                  {{ form_errors(contactForm.email) }}
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                  {{ form_widget(contactForm.subject, {'attr': {'class': 'form-control', 'placeholder': 'Sujet'}}) }}
+                                  {{ form_label(contactForm.subject, 'Sujet') }}
+                                  {{ form_errors(contactForm.subject) }}
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                  {{ form_widget(contactForm.message, {'attr': {'class': 'form-control', 'placeholder': 'Votre message', 'style': 'height: 150px'}}) }}
+                                  {{ form_label(contactForm.message, 'Votre message') }}
+                                  {{ form_errors(contactForm.message) }}
+                              </div>
+
+                              <div class="my-3">
+                                  <div class="loading">Chargement...</div>
+                                  <div class="error-message"></div>
+                                  <div class="sent-message">Votre message a été envoyé. Merci !</div>
+                              </div>
+
+                              <div class="d-grid">
+                                  <button type="submit" class="btn-submit">Envoyer le message <i class="bi bi-send-fill ms-2"></i></button>
+                              </div>
+
+                              {{ form_end(contactForm) }}
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- /Section Contact -->
+
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+              const form = document.getElementById('contactForm');
+
+              form.addEventListener('submit', function (e) {
+                  const fields = form.querySelectorAll('input, textarea');
+                  const errorMessageDiv = form.querySelector('.error-message');
+                  let valid = true;
+                  let errorMsg = '';
+
+                  // Vérifie que tous les champs ne sont pas vides
+                  fields.forEach(field => {
+                      if (field.value.trim() === '') {
+                          valid = false;
+                          errorMsg = 'Tous les champs sont obligatoires.';
+                          field.focus();
+                      }
+                  });
+
+                  // Vérifie le format email uniquement si le reste est ok
+                  if (valid) {
+                      const emailInput = form.querySelector('input[name="contact[email]"]');
+                      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                      if (!emailPattern.test(emailInput.value.trim())) {
+                          valid = false;
+                          errorMsg = 'Veuillez saisir une adresse email valide.';
+                          emailInput.focus();
+                      }
+                  }
+
+                  // Si non valide, empêche l'envoi
+                  if (!valid) {
+                      e.preventDefault();
+                      errorMessageDiv.textContent = errorMsg;
+                      errorMessageDiv.style.display = 'block';
+                  } else {
+                      errorMessageDiv.style.display = 'none';
+                  }
+              });
+          });
+      </script>
+
+  </main>
+{%  endblock %}

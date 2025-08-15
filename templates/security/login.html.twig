@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block seo %}
+    <title>Antalasoft</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+{% endblock %}
+
+{% block main %}
+    <main class="main">
+
+        <!-- Page Title -->
+        <div class="page-title text-center">
+            <div class="breadcrumbs">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('app_home') }}"><i class="bi bi-house"></i> Accueil</a>
+                        </li>
+                        <li class="breadcrumb-item active current">Page de connexion</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="title-wrapper">
+                <h1>Se connecter</h1>
+            </div>
+        </div>
+        <!-- End Page Title -->
+
+        <!-- Section Connexion -->
+        <section id="featured-departments" class="featured-departments section pt-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+
+                        <div class="card shadow-sm p-4">
+                            <h3 class="mb-4 text-center">Connexion</h3>
+
+                            <form method="post">
+                                {% if error %}
+                                    <div class="alert alert-danger">
+                                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                                    </div>
+                                {% endif %}
+
+                                {% if app.user %}
+                                    <div class="alert alert-info mb-3">
+                                        Vous êtes connecté en tant que <strong>{{ app.user.userIdentifier }}</strong>,
+                                        <a href="{{ path('app_logout') }}">Déconnexion</a>.
+                                    </div>
+                                {% endif %}
+
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Adresse email</label>
+                                    <input type="email"
+                                           value="{{ last_username }}"
+                                           name="_username"
+                                           id="username"
+                                           class="form-control"
+                                           placeholder="Entrez votre email"
+                                           autocomplete="email"
+                                           required
+                                           autofocus>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Mot de passe</label>
+                                    <input type="password"
+                                           name="_password"
+                                           id="password"
+                                           class="form-control"
+                                           placeholder="Entrez votre mot de passe"
+                                           autocomplete="current-password"
+                                           required>
+                                </div>
+
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                {# Option "Se souvenir de moi"
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" name="_remember_me" id="_remember_me">
+                                <label class="form-check-label" for="_remember_me">Se souvenir de moi</label>
+                            </div>
+                                #}
+
+                                <button class="btn btn-primary w-100" type="submit">
+                                    Se connecter
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

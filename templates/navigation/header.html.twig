@@ -2,7 +2,8 @@
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
         <a href="{{ path('app_home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
-            <h1 class="sitename">AntalaSoft</h1>
+            <img src="{{ asset('assets/img/logo/logo-favicon.png') }}" class="mx-0" alt="AntalaSoft">
+            <h1 class="sitename mx-0 ps-0">ntalaSoft</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -13,7 +14,7 @@
                 <li><a href="{{ path('app_formations') }}">Formation</a></li>
                 <li><a href="{{ path('app_blogs') }}"><span>Blog</span></a>
                 </li>
-                <li><a href="">Contact</a></li>
+                <li><a href="{{ path('app_contact_new') }}">Contact</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block seo %}
+    <title>Antalasoft</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+{% endblock %}
+
+{% block main %}
+    <main class="main">
+
+        <!-- Page Title -->
+        <div class="page-title text-center">
+            <div class="breadcrumbs">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="{{ path('app_home') }}"><i class="bi bi-house"></i> Accueil</a></li>
+                        <li class="breadcrumb-item active current">Création de compte</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="title-wrapper">
+                <h1>Ajouter un utilisateur</h1>
+            </div>
+        </div>
+        <!-- End Page Title -->
+
+        <!-- recentes actualite Section -->
+        <section id="featured-departments" class="featured-departments section pt-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+
+                        <div class="card shadow-sm p-4">
+                            <h3 class="mb-4 text-center">Inscription</h3>
+
+                            {{ form_start(registrationForm) }}
+
+                            {{ form_row(registrationForm.email, {
+                                attr: { class: 'form-control mb-3', placeholder: 'Votre email' },
+                                label_attr: { class: 'form-label' }
+                            }) }}
+
+                            {{ form_row(registrationForm.plainPassword, {
+                                label: 'Mot de passe',
+                                attr: { class: 'form-control mb-3', placeholder: 'Votre mot de passe' },
+                                label_attr: { class: 'form-label' }
+                            }) }}
+
+
+                            <button type="submit" class="btn btn-primary w-100">S’inscrire</button>
+
+                            {{ form_end(registrationForm) }}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+{% endblock %}

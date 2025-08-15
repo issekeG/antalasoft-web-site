@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block seo %}
+    <title>Antalasoft</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+{% endblock %}
 
 {% block main %}
 <main class="main">
@@ -8,15 +13,15 @@
         <div class="breadcrumbs">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('app_home') }}"><i class="bi bi-house"></i> Accueil</a></li>
                     <li class="breadcrumb-item active current">article Details</li>
                 </ol>
             </nav>
         </div>
 
         <div class="title-wrapper">
-            <h1>Article Details</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+            <h1>Détail de l'article</h1>
+            <p>{{ article.title }}</p>
         </div>
     </div><!-- End Page Title -->
 
@@ -29,22 +34,13 @@
 
                 <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
                     <div class="service-image">
-                        <img src="assets/img/health/cardiology-3.webp" alt="Cardiology Services" class="img-fluid">
-                        <div class="service-tag">
-                            <span>Specialized Care</span>
-                        </div>
+                        <img src="{{ asset('upload/images/articles/' ~ article.image) | imagine_filter('thumbnail_article')}}" alt="{{ article.title }}" class="img-fluid">
                     </div>
                 </div>
 
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
                     <div class="service-content">
-                        <h2>Comprehensive Cardiology Services</h2>
-                        <p class="service-tagline">Advanced heart care with cutting-edge technology and compassionate expertise</p>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+                        {{ article.firstDescription | raw }}
                     </div>
                 </div>
 
@@ -54,10 +50,8 @@
 
                 <div class="col-lg-8" data-aos="fade-right" data-aos-delay="100">
                     <div class="booking-section">
-                        <h3>Sous titre</h3>
-                        <p class="mb-4">
-                            Ceci est le résumé ou l’introduction de l’article. Il permet de capter l’attention du lecteur et de lui donner envie de poursuivre la lecture.
-                        </p>
+                        <h3>{{ article.subTitle }}</h3>
+                        {{ article.description | raw }}
 
                     </div>
                 </div>
@@ -67,7 +61,7 @@
                     <div class="appointment-card">
                         <h4>Contactez-nous</h4>
                         <p>Simple et rapide, nous sommes à votre écoute</p>
-                        <a href="" class="btn-appointment">Formulaire de contact</a>
+                        <a href="{{ path('app_contact_new') }}" class="btn-appointment">Formulaire de contact</a>
                         <div class="contact-alternative">
                             <span>Ou appelez-nous au</span>
                             <a href="tel:+212612504068">+212 6 12 50 40 68</a>

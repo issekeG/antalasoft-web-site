@@ -1,54 +1,31 @@
 <div class="container" data-aos="fade-up" data-aos-delay="100">
 
     <div class="row gy-4">
+        {% for article in articles %}
 
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="department-card">
                 <div class="department-image">
-                    <img src="{{ asset('assets/img/realisations/realisation.png') }}" alt="Data Science" class="img-fluid">
+                    <img src="{{ asset('upload/images/articles/' ~ article.image) | imagine_filter('thumbnail_article')}}" alt="{{ article.title }}" class="img-fluid">
                 </div>
                 <div class="department-content">
-                    <h3>Data Science</h3>
-                    <p>Exploitez la puissance de vos données grâce à nos solutions d’analyse avancée, modélisation prédictive et tableaux de bord interactifs pour booster votre croissance.</p>
-                    <a href="" class="btn-learn-more">
+                    <h3>{{ article.title }}</h3>
+                    <p>
+                        {% if article.firstDescription|length > 174 %}
+                            {{ (article.firstDescription|slice(0, 174))|raw ~ '...' }}
+                        {% else %}
+                            {{ article.firstDescription|raw }}
+                        {% endif %}
+                    </p>
+
+                    <a href="{{ path('app_blog_details', {'slug': article.slug}) }}" class="btn-learn-more">
                         <span>En savoir plus</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
-        </div><!-- End Card -->
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="department-card">
-                <div class="department-image">
-                    <img src="{{ asset('assets/img/realisations/realisation.png') }}" alt="Intelligence Artificielle & Automatisation" class="img-fluid">
-                </div>
-                <div class="department-content">
-                    <h3>Intelligence Artificielle & Automatisation</h3>
-                    <p>Optimisez vos processus grâce à l’IA, au machine learning et à l’automatisation intelligente, réduisant les tâches manuelles et augmentant votre efficacité.</p>
-                    <a href="" class="btn-learn-more">
-                        <span>En savoir plus</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div><!-- End Card -->
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="department-card">
-                <div class="department-image">
-                    <img src="{{ asset('assets/img/realisations/realisation.png') }}" alt="Développement Web & Mobile" class="img-fluid">
-                </div>
-                <div class="department-content">
-                    <h3>Développement Web & Mobile</h3>
-                    <p>Créez des applications web et mobiles sur mesure, performantes et sécurisées, pour offrir une expérience utilisateur optimale et soutenir votre activité.</p>
-                    <a href="" class="btn-learn-more">
-                        <span>En savoir plus</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div><!-- End Card -->
+        </div>
+        {% endfor %}
 
     </div>
 
