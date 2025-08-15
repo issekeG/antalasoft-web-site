@@ -1,9 +1,55 @@
 {% extends 'base.html.twig' %}
+
 {% block seo %}
-    <title>Antalasoft</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Nos Formations | Data Science, Intelligence Artificielle & Développement Web/Mobile - Antalasoft</title>
+    <meta name="description" content="Antalasoft vous propose des formations professionnelles en Data Science, Intelligence Artificielle et Développement Web & Mobile. Maîtrisez l'analyse de données, le machine learning, la création de sites et applications performants.">
+    <meta name="keywords" content="formation Data Science, formation IA, formation Intelligence Artificielle, formation Machine Learning, formation Deep Learning, formation développement web, formation développement mobile, Python, React, Flutter, analyse de données, automatisation, Antalasoft">
+    <meta name="author" content="Antalasoft">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://www.antalasoft.com/nos-formations">
+
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Nos Formations | Data Science, IA & Développement Web/Mobile - Antalasoft">
+    <meta property="og:description" content="Formez-vous avec Antalasoft en Data Science, Intelligence Artificielle et Développement Web & Mobile pour booster votre carrière.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.antalasoft.com/nos-formations">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Course",
+          "name": "Formations professionnelles Antalasoft",
+          "description": "Formations spécialisées en Data Science, Intelligence Artificielle et Développement Web/Mobile.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Antalasoft",
+            "sameAs": "https://www.antalasoft.com"
+      },
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "name": "Formation Data Science",
+          "description": "Analyse prédictive, tableaux de bord interactifs, nettoyage et structuration de données."
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Formation Intelligence Artificielle",
+          "description": "Chatbots, analyse d’images et vidéos, modèles de Machine Learning."
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Formation Développement Web & Mobile",
+          "description": "Sites vitrines, e-commerce, applications mobiles iOS & Android, intégrations API."
+        }
+      ]
+    }
+    </script>
 {% endblock %}
+
 
 {% block main %}
 

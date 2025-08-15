@@ -1,8 +1,27 @@
 {% extends 'base.html.twig' %}
 {% block seo %}
-    <title>Antalasoft</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Blog & Actualités | Antalasoft</title>
+    <meta name="description" content="Retrouvez les dernières actualités, conseils et tendances en technologie, développement web, et innovation partagées par Antalasoft.">
+    <meta name="keywords" content="blog Antalasoft, actualités tech, développement web, tendances numériques, innovation, articles informatiques">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog & Actualités | Antalasoft">
+    <meta property="og:description" content="Retrouvez les dernières actualités, conseils et tendances en technologie, développement web, et innovation partagées par Antalasoft.">
+    <meta property="og:image" content="{{ asset('assets/img/logo/logo.png') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.uri }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog & Actualités | Antalasoft">
+    <meta name="twitter:description" content="Retrouvez les dernières actualités, conseils et tendances en technologie, développement web, et innovation partagées par Antalasoft.">
+    <meta name="twitter:image" content="{{ asset('assets/img/logo/logo.png') }}">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ app.request.uri }}">
 {% endblock %}
 
 {% block main %}

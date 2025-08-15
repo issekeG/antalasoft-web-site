@@ -1,4 +1,45 @@
 {% extends 'base.html.twig' %}
+{% block seo %}
+    <title>Nos Services | Antalasoft - Data Science, IA, Développement Web & Automatisation</title>
+
+    {# Meta de base #}
+    <meta name="description" content="Découvrez les services Antalasoft : Data Science & Intelligence Artificielle, Web Scraping & Automatisation, Développement Web, Applications Mobiles. Des solutions digitales sur mesure pour booster votre performance.">
+    <meta name="keywords" content="Antalasoft services, Data Science, Intelligence Artificielle, IA, Web Scraping, Automatisation, Développement Web, Développement Mobile, Création site internet, Application mobile, Tableau de bord, Modèles prédictifs, Symfony, React, Flutter, Python, Django, FastAPI, n8n, scikit-learn">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Antalasoft">
+
+    {# Canonical URL #}
+    <link rel="canonical" href="https://www.antalasoft.com/services">
+
+    <meta property="og:title" content="Nos Services | Antalasoft - Data Science, IA, Développement Web & Automatisation">
+    <meta property="og:description" content="Solutions digitales sur mesure : Data Science, IA, Web Scraping, Automatisation, Développement Web & Mobile.">
+    <meta property="og:url" content="https://www.antalasoft.com/nos-services">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+    {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nos Services | Antalasoft - Data Science, IA, Développement Web & Automatisation">
+    <meta name="twitter:description" content="Data Science, IA, Web Scraping, Automatisation, Développement Web & Mobile. Solutions digitales pour booster votre entreprise.">
+    <meta name="twitter:site" content="@Antalasoft">
+
+    {# Données structurées JSON-LD pour Google #}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Solutions digitales et technologiques",
+            "provider": {
+                "@type": "Organization",
+                "name": "Antalasoft",
+                "url": "https://www.antalasoft.com/",
+                "logo": "https://www.antalasoft.com/assets/img/logo/logo.png"
+            },
+            "areaServed": ["France", "Maroc","Tunisie","Gabon","Congo","Belgique", "Europe", "Afrique"],
+            "description": "Antalasoft propose des services de Data Science, Intelligence Artificielle, Web Scraping, Automatisation, Développement Web et Mobile."
+        }
+    </script>
+{% endblock %}
 
 {% block main %}
 <main class="main">

@@ -1,9 +1,51 @@
 {% extends 'base.html.twig' %}
 {% block seo %}
-    <title>Antalasoft</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>{{ realisation.title }} | Antalasoft - Réalisation Data Science, IA, Web & Mobile</title>
+
+    {# Meta de base #}
+    <meta name="description" content="{{realisation.description }}">
+    <meta name="keywords" content="Antalasoft, réalisation, projet, portfolio, Data Science, IA, Web, Mobile, Automatisation">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Antalasoft">
+
+    {# Canonical URL dynamique #}
+    <link rel="canonical" href="{{ absolute_url(path('app_realisation_details', {slug: realisation.slug})) }}">
+
+    {# Open Graph pour Facebook / LinkedIn #}
+    <meta property="og:title" content="{{ realisation.title }} | Antalasoft">
+    <meta property="og:description" content="{{ realisation.description }}">
+    <meta property="og:url" content="{{ absolute_url(path('app_realisation_details', {slug: realisation.slug})) }}">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+
+    {# Twitter Card dynamique #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ realisation.title }} | Antalasoft">
+    <meta name="twitter:description" content="{{ realisation.description }}">
+    <meta property="og:image" content="{{ absolute_url(asset('assets/upload/realisation/'~realisation.poster)) }}">
+    <meta name="twitter:site" content="@Antalasoft">
+
+    {# Données structurées JSON-LD dynamiques #}
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": "{{ realisation.title }}",
+      "url": "{{ absolute_url(path('app_realisation_details', {slug: realisation.slug})) }}",
+      "image": "{{ absolute_url(asset('assets/upload/realisation/'~realisation.poster)) }}",
+      "creator": {
+        "@type": "Organization",
+        "name": "Antalasoft",
+        "url": "https://www.antalasoft.com/",
+        "logo": "https://www.antalasoft.com/assets/img/logo/logo.png"
+      },
+      "description": "{{realisation.description }}",
+      "inLanguage": "fr",
+      "datePublished": "{{ realisation.realisationAt|date('Y-m-d') }}"
+    }
+    </script>
 {% endblock %}
+
 
 {% block main %}
 

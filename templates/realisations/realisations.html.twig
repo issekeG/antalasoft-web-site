@@ -1,9 +1,44 @@
 {% extends 'base.html.twig' %}
 {% block seo %}
-    <title>Antalasoft</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Nos Réalisations | Antalasoft - Projets Data Science, IA, Web & Mobile</title>
+
+    {# Meta de base #}
+    <meta name="description" content="Découvrez les réalisations d’Antalasoft : projets en Data Science, Intelligence Artificielle, Développement Web, Applications Mobiles et Automatisation. Des solutions concrètes pour nos clients au Maroc, en France et à l’international.">
+    <meta name="keywords" content="Antalasoft réalisations, portfolio, projets clients, Data Science, Intelligence Artificielle, IA, Développement Web, Applications Mobiles, Automatisation, Web Scraping, études de cas, références clients">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Antalasoft">
+
+    {# Canonical URL #}
+    <link rel="canonical" href="https://www.antalasoft.com/nos-realisations">
+
+    {# Open Graph pour Facebook / LinkedIn #}
+    <meta property="og:title" content="Nos Réalisations | Antalasoft - Projets Data Science, IA, Web & Mobile">
+    <meta property="og:description" content="Découvrez les projets d’Antalasoft en Data Science, IA, Web, Mobile et Automatisation. Des solutions innovantes déjà déployées chez nos clients.">
+    <meta property="og:image" content="https://www.antalasoft.com/assets/imgs/logo/logo.png">
+    <meta property="og:url" content="https://www.antalasoft.com/nos-realisations">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+
+    {# Données structurées JSON-LD pour Google #}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            "name": "Portfolio et Réalisations - Antalasoft",
+            "url": "https://www.antalasoft.com/nos-realisations",
+            "creator": {
+                "@type": "Organization",
+                "name": "Antalasoft",
+                "url": "https://www.antalasoft.com/",
+                "logo": "https://www.antalasoft.com/assets/img/logo/logo.png"
+            },
+            "description": "Réalisations et projets d’Antalasoft : Data Science, Intelligence Artificielle, Web, Mobile et Automatisation.",
+            "inLanguage": "fr"
+        }
+    </script>
 {% endblock %}
+
 
 {% block main %}
 

@@ -1,9 +1,56 @@
 {% extends 'base.html.twig' %}
+
 {% block seo %}
-    <title>Antalasoft</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Contactez Antalasoft | Demande d'informations, devis ou assistance</title>
+    <meta name="description" content="Besoin d'un renseignement, d'un devis ou d'une assistance technique ? Contactez Antalasoft à Casablanca par téléphone, email ou via notre formulaire en ligne.">
+    <meta name="keywords" content="contact Antalasoft, demande de devis, support technique, Casablanca, Maroc, développement web, data science, intelligence artificielle">
+    <meta name="author" content="Antalasoft">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://antalasoft.com/nous-contacter">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Contactez Antalasoft | Demande d'informations, devis ou assistance">
+    <meta property="og:description" content="Contactez Antalasoft pour toute demande d'information, devis ou assistance. Situés à Casablanca, nous sommes à votre écoute.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antalasoft.com/nous-contacter">
+    <meta property="og:image" content="{{ asset('assets/img/logo/logo.png') }}">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contactez Antalasoft | Demande d'informations, devis ou assistance">
+    <meta name="twitter:description" content="Vous avez un projet ou besoin d'aide ? Contactez Antalasoft via notre formulaire en ligne, par email ou téléphone.">
+    <meta name="twitter:image" content="{{ asset('assets/img/logo/logo.png') }}">
+    <meta name="twitter:site" content="@Antalasoft">
+
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Antalasoft",
+            "url": "https://www.antalasoft.com",
+            "logo": "{{ app.request.schemeAndHttpHost ~ asset('assets/img/logo/logo.png') }}",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+212 6 12 50 40 68",
+          "contactType": "customer service",
+          "areaServed": "MA",
+          "availableLanguage": ["French", "English"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sidi Maroof",
+          "addressLocality": "Casablanca",
+          "addressCountry": "MA"
+        }
+      }
+    }
+    </script>
 {% endblock %}
+
 
 {% block main %}
 

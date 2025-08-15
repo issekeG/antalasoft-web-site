@@ -1,8 +1,50 @@
 {% extends 'base.html.twig' %}
 {% block seo %}
-    <title>Antalasoft</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>{{ article.title }} | Blog Antalasoft</title>
+    <meta name="description" content="{{ article.firstDescription|default(article.description[:160]|striptags) }}">
+    <meta name="keywords" content="blog Antalasoft, actualités, {{ article.firstDescription }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ app.request.uri }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ article.title }} | Blog Antalasoft">
+    <meta property="og:description" content="{{ article.firstDescription) }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:image" content="{{ asset('assets/upload/images/articles/'~ article.image) }}">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="article:published_time" content="{{ article.postedAt|date('c') }}">
+    <meta property="article:modified_time" content="{{ article.postedAt|date('c') }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ article.title }} | Blog Antalasoft">
+    <meta name="twitter:description" content="{{ article.firstDescription }}">
+    <meta name="twitter:image" content="{{ asset('assets/upload/images/articles/'~ article.image) }}">
+
+    <meta name="twitter:site" content="@Antalasoft">
+
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "{{ article.title|e('json') }}",
+      "image": "{{ asset('assets/upload/images/articles/'~ article.image) }}",
+
+      "publisher": {
+        "@type": "Organization",
+        "name": "Antalasoft",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ asset('assets/upload/images/articles/'~ article.image) }}"
+        }
+      },
+      "datePublished": "{{ article.postedAt|date('c') }}",
+      "dateModified": "{{ article.postedAt|date('c') }}",
+      "description": "{{ article.description}}"
+    }
+    </script>
 {% endblock %}
 
 {% block main %}

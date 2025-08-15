@@ -9,14 +9,16 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
-
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 #[Route('/nous-contacter')]
 final class ContactController extends AbstractController
 {
 
     #[Route(name: 'app_contact_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -26,6 +28,23 @@ final class ContactController extends AbstractController
             $contact->setSendAt(new \DateTime());
             $entityManager->persist($contact);
             $entityManager->flush();
+
+            $email = (new TemplatedEmail())
+                ->from('contact@antalasoft.com')
+                ->to('contact@antalasoft.com')
+                ->cc('i.gickelokabi@antalasoft.com')
+                ->bcc('i.gickelokabi@gmail.com')
+                ->priority(Email::PRIORITY_HIGH)
+                ->subject($contact->getSubject())
+                ->htmlTemplate('contact/emails/contact.html.twig')
+                ->context([
+                    'fullName' => $contact->getFullName(),
+                    'addressEmail'    => $contact->getEmail(),
+                    'subject'  => $contact->getSubject(),
+                    'message'  => $contact->getMessage(),
+                ]);
+
+            $mailer->send($email);
 
             $this->addFlash('success', 'Votre message a été envoyé avec succès. Nous vous recontacterons sous 24 heures.');
 

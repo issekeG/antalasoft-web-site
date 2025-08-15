@@ -1,9 +1,38 @@
 {% extends 'base.html.twig' %}
 {% block seo %}
-    <title>Antalasoft</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Antalasoft | Data Science, IA, Développement Web & Automatisation</title>
+
+    {# Meta de base #}
+    <meta name="description" content="Antalasoft transforme vos données en leviers de croissance grâce à la Data Science, l’Intelligence Artificielle, le développement web & mobile et l’automatisation. Solutions sur mesure pour booster votre performance.">
+    <meta name="keywords" content="Antalasoft, Data Science, Intelligence Artificielle, IA, Développement Web, Développement Mobile, Automatisation, Web Scraping, Analyse de données, Tableau de bord, Modèles prédictifs, Symfony, React, Flutter, Python, Django, FastAPI, n8n, scikit-learn">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Antalasoft">
+
+    {# Canonical URL #}
+    <link rel="canonical" href="https://www.antalasoft.com/">
+
+    {# Open Graph pour Facebook / LinkedIn #}
+    <meta property="og:title" content="Antalasoft | Data Science, IA, Développement Web & Automatisation">
+    <meta property="og:description" content="Boostez votre performance avec Antalasoft : Data Science, Intelligence Artificielle, Développement Web & Mobile, Automatisation et Web Scraping.">
+    <meta property="og:image" content="https://www.antalasoft.com/assets/img/logo/logo.png">
+    <meta property="og:url" content="https://www.antalasoft.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Antalasoft",
+            "url": "https://www.antalasoft.com/",
+            "logo": "https://www.antalasoft.com/assets/img/logo/logo.png",
+            "description": "Antalasoft développe des solutions digitales sur mesure en Data Science, Intelligence Artificielle, développement web & mobile et automatisation."
+        }
+    </script>
 {% endblock %}
+
+
 
 {% block main %}
     <main class="main" >

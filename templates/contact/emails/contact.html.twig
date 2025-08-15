@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveau message de contact</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 22px;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .info {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .footer {
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            margin-top: 25px;
+        }
+        .label {
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📩 Nouveau message de contact</h1>
+    <p>Vous avez reçu un nouveau message depuis le formulaire de contact du site <strong>Antalasoft</strong>.</p>
+
+    <div class="info">
+        <p><span class="label">Nom complet :</span> {{ fullName }}</p>
+        <p><span class="label">E-mail :</span> {{ addressEmail }}</p>
+        <p><span class="label">Sujet :</span> {{ subject }}</p>
+    </div>
+
+    <p><span class="label">Message :</span></p>
+    <p>{{ message|nl2br }}</p>
+
+    <div class="footer">
+        <p>— Message envoyé automatiquement depuis le site Antalasoft —</p>
+    </div>
+</div>
+</body>
+</html>
